@@ -3,11 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AddPersonController;
 use App\Http\Controllers\User\AppointmentController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\HomeController;
-// Route::get('/admin', function () {
-//     return "hello user";
-// });
+
+
 
 Route::get('/add_person',[AddPersonController::class,'index'])->middleware(['auth:sanctum','user_side']);
 Route::post('/create_person',[AddPersonController::class,'create'])->middleware(['auth:sanctum']);
@@ -39,13 +36,13 @@ Route::get('/todayAppointment',[AppointmentController::class,'todayAppointment']
 
 
 Route::get('/dashboards',[AppointmentController::class,'countAppointmenr'])->middleware(['auth:sanctum','user_side']); // ShowTodayAppontmentList
-//Route::get('/home',[HomeController::class,'redirect'])->middleware('auth','verified');
+
 
 Route::get('/notifaction',[AppointmentController::class,'notifaction'])->middleware(['auth:sanctum','user_side']);  // ShowTodayAppontmentList
 
 Route::get('/cnlnotifaction//{id}',[AppointmentController::class,'cnlnotifaction'])->middleware(['auth:sanctum','user_side']);  // Change 0 To 1 notifaction
 
-//Route::view('/fullcalendar','admin.fullcalendar');  // Change 0 To 1 notifaction
+
 
 Route::get('/download',[AppointmentController::class,'download'])->middleware(['auth:sanctum','user_side']);  // DWNLOD
 

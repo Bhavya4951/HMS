@@ -47,7 +47,7 @@ class AppointmentController extends Controller
         $Apntmt->save();
 
         $Apntmt_id= Appointment::get();
-        //dd($Apntmt->id);
+       
         $cnlntfctn = new NotificationsBall();
         $cnlntfctn->p_id=$Apntmt->id;
         $cnlntfctn->save();
@@ -77,7 +77,7 @@ class AppointmentController extends Controller
         $approve->save();
         $approve = Appointment::find($id);
         return view('admin.appointment_date',compact('approve'));
-        //return redirect()->back();
+        
     }
 
     public function select_appointment_data(Request $request,$id){
@@ -87,7 +87,7 @@ class AppointmentController extends Controller
        
         $date= date("d/m/Y", strtotime( $email_user->appointment_date));
 
-       // dd($date);
+       
         $validated = $request->validate([
             'date' => ['required','after:yesterday'],   
         ]);
@@ -117,7 +117,7 @@ class AppointmentController extends Controller
 
        
         $approve->status="Completed";
-        //$approve->appointment_date="0000-00-00";
+        
         $approve->save();
         return redirect()->back();
     }
@@ -297,7 +297,7 @@ class AppointmentController extends Controller
                         '<td>'.$row->message.
                         '<td>'.$row->status.
                         '<td>'.$row->a_date.
-                        // dd('<td> <a href='. $url.'><div class=badge badge-outline-warning>Approved');
+                      
                         '<td> <a href='. $url1.'><div class=badge badge-outline-warning>Approved'.
                         '<td> <a href='.$url2.'><div class= badge badge-outline-danger>Rejected'.
                         '<td> <a href='.$url3.'><div class=badge badge-outline-success>Completed'.
@@ -372,7 +372,7 @@ class AppointmentController extends Controller
                
               $count_apmt = $today_apmt->count();
                
-              // dd($count_apmt);
+             
                return view('admin.admin_home',compact('count_apmt'));
                        
            }

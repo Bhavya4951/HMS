@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -17,7 +16,7 @@ class HomeController extends Controller
             
                 if (Auth::user()->usertype == 1 || Auth::user()->usertype == "doctor" || Auth::user()->usertype == "wordboy" || Auth::user()->usertype == "nures" || Auth::user()->usertype == "patient") {     
                     return redirect('/dashboards');
-                    //return view('admin.admin_home');
+                   
                 }
                 
                 else{
